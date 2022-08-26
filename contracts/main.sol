@@ -18,6 +18,7 @@ contract HackathonContract {
         uint amount;
         address organizersNominee;
         address sponsorsNominee;
+	bool paid;
     }
 
     constructor(string memory name_, address organizer_) {
@@ -38,7 +39,7 @@ contract HackathonContract {
     }
 
     function startDistribution(uint prizeId, address nominated_) public {
-        require(msg.sender == organizerAddress, "only organizer");
+	require(msg.sender == organizerAddress, "only organizer");
         prizes[prizeId].organizersNominee = nominated_;
     }
 
@@ -48,8 +49,10 @@ contract HackathonContract {
     }
 
     function withdraw(uint prizeId) public {
-        require(prizes[prizeId].organizersNominee == msg.sender && prizes[prizeId].sponsorsNominee == msg.sender, "error");
-        payable(msg.sender).transfer(prizes[prizeId].amount);
+        require(prizes[prizeId].organizersNominee == msg.sender && prizes[prizeId].sponsorsNominee == msg.sender && prizes[prizeId].paid != true, "error");
+        prizes[prizeId].paid = true;
+       	payable(msg.sender).transfer(prizes[prizeId].amount);
+
     }
 
   
