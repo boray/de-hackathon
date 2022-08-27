@@ -1,10 +1,13 @@
+# THIS IS AN PoC
+---
+
 # How it works
 
 ## Hackathon organizer deploys the contract
 - Hackathon name and organizer address are immutable.They cannot be changed after deployment.
 
 ## Sponsors creates and deposit prizes 
-- Sponsor submits the name of the prize and transfers the amount of prize at the time of prize creation. Additional metadata about prize can be added to the Prize struct.
+- Sponsor submits the name of the prize and transfers the prize amount at the time of prize creation. Additional metadata about the prize can be added to the Prize struct.
 
 ## Hackathon evaluation process happens off-chain
 - Like it always has been
@@ -16,5 +19,5 @@
 - Sponsors submits the winner's address for each of their prizes.
 
 ## Nominees withdraw their prizes
-- If both sponsor's and organizer's winner address match, winner can withdraw the prize from the contract.
+- If the winning address of both the sponsor and the organizer match, the winner can withdraw their prize from the contract.
 
